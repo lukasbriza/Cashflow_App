@@ -1,0 +1,139 @@
+@keyframes focusAnimationOn {
+  0% {
+    opacity: 1;
+    width: 0px;
+    bottom: 0px;
+  }
+  99% {
+    width: 100%;
+    bottom: 0px;
+  }
+  100% {
+    bottom: 1px;
+    width: 100%;
+  }
+}
+
+@keyframes focusAnimationOff {
+  0% {
+    opacity: 1;
+    width: 100%;
+    bottom: 1px;
+  }
+  1% {
+    opacity: 1;
+    bottom: 0px;
+    width: 100%;
+  }
+  99% {
+    opacity: 1;
+    bottom: 0px;
+    width: 0%;
+  }
+  100% {
+    bottom: 1px;
+    width: 0%;
+    opacity: 0;
+  }
+}
+.dataHandler {
+  height: 56px;
+  position: relative;
+}
+.react-datepicker-wrapper {
+  position: inherit;
+  height: 100%;
+
+  .react-datepicker__input-container {
+    height: inherit;
+    position: relative;
+    input {
+      width: 100%;
+      color: rgba(0, 0, 0, 0.87);
+      height: inherit;
+      padding-left: 4%;
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      font-size: 17px;
+      background-color: rgba(0, 0, 0, 0.06);
+      border: none;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+
+      transition-property: background-color;
+      transition-duration: 0.25s;
+      transition-timing-function: ease-out;
+    }
+
+    input:focus {
+      border: none;
+      outline: 1px;
+    }
+  }
+  .react-datepicker__input-container::after,
+  .react-datepicker__input-container::before {
+    content: " ";
+    left: 0px;
+    bottom: 1px;
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    background-color: rgb(130, 130, 130);
+  }
+
+  .react-datepicker__input-container::after {
+    background-color: rgb(25, 118, 210);
+    z-index: +10;
+    opacity: 1;
+    width: 0%;
+    height: 1px;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: initial;
+  }
+
+  .react-datepicker__input-container::before {
+    z-index: +10;
+    transition-property: background-color;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+  }
+
+  .react-datepicker__input-container:hover {
+    input {
+      background-color: rgba(0, 0, 0, 0.115);
+    }
+  }
+}
+
+.react-datepicker-wrapper:hover {
+  .react-datepicker__input-container::before {
+    background-color: rgb(0, 0, 0);
+  }
+}
+
+.dataHandler[data-focused="true"] {
+  .react-datepicker-wrapper {
+    .react-datepicker__input-container::after {
+      animation-name: focusAnimationOn;
+      animation-duration: 200ms;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+.dataHandler[data-focused="false"] {
+  .react-datepicker-wrapper {
+    .react-datepicker__input-container::after {
+      animation-name: focusAnimationOff;
+      animation-duration: 200ms;
+      animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+.react-datepicker-popper {
+  z-index: 50;
+}

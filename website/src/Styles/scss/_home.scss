@@ -1,0 +1,54 @@
+.inputForm {
+  margin-top: 15px;
+  width: 100%;
+  max-width: 920px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .amountInput,
+  .typeInput,
+  .outcomeTypeInput,
+  .dataHandler {
+    width: calc(50% - 20px);
+    max-width: 430px;
+    margin: 5px 10px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: none;
+    .amountInput,
+    .typeInput,
+    .outcomeTypeInput,
+    .dataHandler {
+      max-width: none;
+      width: calc(90% / 4);
+    }
+  }
+
+  .addItemButton {
+    @media (min-width: 1200px) {
+      margin-top: 15px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .amountInput,
+    .typeInput,
+    .outcomeTypeInput,
+    .dataHandler {
+      width: 95%;
+      margin-top: 5px;
+    }
+
+    .dataHandler {
+      margin-bottom: 20px;
+    }
+  }
+}

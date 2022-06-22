@@ -8,10 +8,12 @@ const Login = () => {
 
   useEffect(() => {
     if (loginContext?.loged === true) {
-      navigate("home");
+      console.log("logged: ", loginContext?.loged);
+      navigate("app/home");
     }
-  }, [loginContext?.loged]);
-  return <div>Login</div>;
+  }, [loginContext?.loged, navigate]);
+
+  return <div>Login route</div>;
 };
 
 export { Login };
